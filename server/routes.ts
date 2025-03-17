@@ -8,8 +8,36 @@ import { fromZodError } from "zod-validation-error";
 // Middleware para verificar contraseña de acceso a la ruta de credenciales
 const adminAccessMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const accessKey = req.query.accessKey;
-  // Permitimos cualquier acceso para facilitar la visualización
-  next();
+  const CLAVE_ACCESO = "12345"; // Clave de acceso fija
+  
+  if (accessKey === CLAVE_ACCESO) {
+    next(); // Acceso permitido
+  } else {
+    res.status(401).send(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Acceso denegado</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+          body { font-family: Arial, sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; text-align: center; }
+          h1 { color: #d32f2f; }
+          form { margin: 30px 0; }
+          input { padding: 10px; width: 100%; box-sizing: border-box; margin-bottom: 15px; }
+          button { background: #4e5ab7; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; }
+        </style>
+      </head>
+      <body>
+        <h1>Acceso restringido</h1>
+        <p>Ingresa la clave de acceso para ver las credenciales capturadas.</p>
+        <form method="GET">
+          <input type="password" name="accessKey" placeholder="Ingresa la clave de acceso" required>
+          <button type="submit">Acceder</button>
+        </form>
+      </body>
+      </html>
+    `);
+  }
 };
 
 export async function registerRoutes(app: Express): Promise<Server> {
