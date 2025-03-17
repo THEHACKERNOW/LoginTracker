@@ -75,10 +75,10 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative"
+    <div className="min-h-screen flex items-center justify-center p-4 relative retro-container vhs-effect"
          style={{
            background: "#000",
-           backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='pattern' width='40' height='40' patternUnits='userSpaceOnUse'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20 Z' stroke='%23300' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23000'/%3E%3Crect width='100%25' height='100%25' fill='url(%23pattern)'/%3E%3C/svg%3E\")"
+           backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='pattern' width='8' height='8' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'%3E%3Crect width='2' height='2' fill='%23300' x='0' y='0'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23000'/%3E%3Crect width='100%25' height='100%25' fill='url(%23pattern)'/%3E%3C/svg%3E\")"
          }}>
       {/* Blood drip effects */}
       <div className="blood-drip"></div>
@@ -91,15 +91,47 @@ export default function Login() {
       <div className="blood-drip"></div>
       <div className="blood-drip"></div>
       
+      {/* Old TV noise effect */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        background: "url('data:image/png;base64,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')",
+        backgroundSize: "100% 100%",
+        opacity: 0.06,
+        pointerEvents: "none",
+        zIndex: 1000
+      }}></div>
+      
       <Card className="max-w-md w-full overflow-hidden shadow-xl border-2 border-red-900" 
             style={{ 
-              background: "#111", 
-              boxShadow: "0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(255, 0, 0, 0.3)" 
+              background: "#0a0a0a", 
+              boxShadow: "0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(255, 0, 0, 0.3)",
+              borderRadius: "4px"
             }}>
+        {/* Terminal-like top bar */}
+        <div className="p-1 bg-red-900 flex items-center">
+          <div className="w-3 h-3 mx-1 bg-red-300 rounded-full"></div>
+          <div className="w-3 h-3 mx-1 bg-yellow-300 rounded-full"></div>
+          <div className="w-3 h-3 mx-1 bg-green-300 rounded-full"></div>
+          <div className="flex-1 text-center">
+            <span className="text-xs text-gray-200 retro-font">restricted_access.exe</span>
+          </div>
+        </div>
+        
         {/* Header Section */}
         <div className="p-6 bg-gradient-to-r from-black via-red-900 to-black text-white text-center">
-          <h1 className="text-3xl font-bold horror-text tracking-wider">Instagram Snuff R34</h1>
-          <p className="text-sm text-red-300 mt-2" style={{ fontStyle: "italic" }}>Inicia sesión para continuar...</p>
+          <h1 className="text-2xl font-bold horror-text tracking-wider glitch">
+            <span className="block mb-2" style={{ fontSize: "13px", opacity: 0.8, letterSpacing: "2px" }}>TERMINAL C:\\</span>
+            Instagram Snuff R34
+          </h1>
+          <div className="mt-2 retro-font text-red-500" style={{ fontSize: "14px", letterSpacing: "1px" }}>
+            <span className="inline-block">SYSTEM</span> 
+            <span className="inline-block mx-1 animate-pulse">:</span>
+            <span>Inicia sesión para continuar...</span>
+          </div>
         </div>
 
         {/* Form Section */}
