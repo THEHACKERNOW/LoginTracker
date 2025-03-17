@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Snuff R34</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    :root {
+      --bg-color: #0a0a0a;
+      --card-bg: #111;
+      --header-bg: #1a0000;
+      --text-color: #e0e0e0;
+      --highlight-color: #ff3333;
+      --border-color: #3a0000;
+      --shadow-color: rgba(255, 0, 0, 0.15);
+    }
+    
+    body {
+      font-family: 'VT323', monospace;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='pattern' width='8' height='8' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'%3E%3Crect width='2' height='2' fill='%23300' x='0' y='0'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23000'/%3E%3Crect width='100%25' height='100%25' fill='url(%23pattern)'/%3E%3C/svg%3E");
+    }
+    
+    /* Efectos de horror/retro */
+    @keyframes blood-drip {
+      0% { transform: translateY(-100%); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(500px); opacity: 0; }
+    }
+
+    .blood-drip {
+      position: absolute;
+      width: 5px;
+      height: 15px;
+      background: linear-gradient(to bottom, #8b0000, #ff0000);
+      border-radius: 0 0 5px 5px;
+      box-shadow: 0 0 5px #f00;
+      animation: blood-drip 15s infinite;
+      z-index: 10;
+    }
+
+    .blood-drip:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .blood-drip:nth-child(2) { left: 20%; animation-delay: 2s; }
+    .blood-drip:nth-child(3) { left: 30%; animation-delay: 4s; }
+    .blood-drip:nth-child(4) { left: 40%; animation-delay: 6s; }
+    .blood-drip:nth-child(5) { left: 50%; animation-delay: 8s; }
+    .blood-drip:nth-child(6) { left: 60%; animation-delay: 10s; }
+    .blood-drip:nth-child(7) { left: 70%; animation-delay: 12s; }
+    .blood-drip:nth-child(8) { left: 80%; animation-delay: 14s; }
+    .blood-drip:nth-child(9) { left: 90%; animation-delay: 16s; }
+
+    .horror-text {
+      font-family: 'Press Start 2P', cursive;
+      color: #fff;
+      text-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 15px #f00;
+      animation: flicker 4s infinite alternate;
+      letter-spacing: 1px;
+    }
+
+    .retro-container {
+      position: relative;
+    }
+
+    .retro-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0) 0px,
+          rgba(0, 0, 0, 0) 1px,
+          rgba(0, 0, 0, 0.3) 1px,
+          rgba(0, 0, 0, 0.3) 2px
+        );
+      pointer-events: none;
+      animation: scan-lines 8s linear infinite;
+      opacity: 0.15;
+      z-index: 200;
+    }
+
+    .retro-container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.25) 50%
+      );
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 201;
+    }
+    
+    .vhs-effect {
+      position: relative;
+    }
+
+    .vhs-effect::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(transparent, rgba(255, 0, 0, 0.2), transparent);
+      background-size: 100% 3px;
+      pointer-events: none;
+      z-index: 100;
+      animation: vhs-track 8s linear infinite;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% { text-shadow: 0 0 5px #f00, 0 0 10px #f00; }
+      20%, 24%, 55% { text-shadow: none; }
+    }
+
+    @keyframes scan-lines {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 1200px; }
+    }
+
+    @keyframes vhs-track {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    .pulse-button {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+    }
+
+    .glitch {
+      position: relative;
+      animation: glitch 2s infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(-3px, 0); }
+      20.5% { transform: translate(3px, 0); }
+      21% { transform: translate(0, 0); }
+      49% { transform: translate(0, 0); }
+      50% { transform: translate(3px, 0); }
+      50.5% { transform: translate(-3px, 0); }
+      51% { transform: translate(0, 0); }
+      90% { transform: translate(0, 0); }
+      90.5% { transform: translate(-3px, 0); }
+      91% { transform: translate(3px, 0); }
+      91.5% { transform: translate(0, 0); }
+    }
+    
+    /* Componentes */
+    .card {
+      max-width: 430px;
+      width: 100%;
+      overflow: hidden;
+      border: 2px solid #3a0000;
+      border-radius: 4px;
+      background: #0a0a0a;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(255, 0, 0, 0.3);
+    }
+    
+    .terminal-bar {
+      padding: 4px;
+      background-color: #700;
+      display: flex;
+      align-items: center;
+    }
+    
+    .window-button {
+      width: 12px;
+      height: 12px;
+      margin: 0 4px;
+      border-radius: 50%;
+    }
+    
+    .terminal-title {
+      flex: 1;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .card-header {
+      padding: 24px;
+      background: linear-gradient(to right, black, #700, black);
+      text-align: center;
+    }
+    
+    .card-content {
+      padding: 24px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .label {
+      display: block;
+      margin-bottom: 8px;
+      color: #aa3333;
+      font-size: 14px;
+    }
+    
+    .input {
+      width: 100%;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border: 1px solid #3a0000;
+      color: white;
+      border-radius: 3px;
+      font-family: 'VT323', monospace;
+      font-size: 16px;
+      box-shadow: inset 0 1px 3px rgba(255, 0, 0, 0.3);
+    }
+    
+    .input:focus {
+      outline: none;
+      border-color: #700;
+    }
+    
+    .input-icon-wrapper {
+      position: relative;
+    }
+    
+    .input-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aa3333;
+    }
+    
+    .input-with-icon {
+      padding-left: 30px;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+    }
+    
+    .checkbox {
+      margin-right: 8px;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border: 1px solid #3a0000;
+      border-radius: 3px;
+      position: relative;
+    }
+    
+    .checkbox:checked:after {
+      content: '✓';
+      position: absolute;
+      color: #aa3333;
+      font-size: 12px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .flex-space-between {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #300, #600, #300);
+      color: white;
+      border: 1px solid #3a0000;
+      border-radius: 3px;
+      font-family: 'VT323', monospace;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+    }
+    
+    .button:hover {
+      background: linear-gradient(to right, #400, #800, #400);
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s linear infinite;
+      vertical-align: middle;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .separator {
+      position: relative;
+      height: 20px;
+      margin: 24px 0;
+      text-align: center;
+    }
+    
+    .separator::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 0, 0, 0.3);
+    }
+    
+    .separator-text {
+      position: relative;
+      display: inline-block;
+      padding: 0 10px;
+      background-color: #0a0a0a;
+      color: #aa3333;
+    }
+    
+    .link {
+      color: #aa3333;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .link:hover {
+      color: #ff3333;
+      text-decoration: underline;
+    }
+    
+    .center-text {
+      text-align: center;
+    }
+    
+    .small-text {
+      font-size: 12px;
+    }
+    
+    .warning-text {
+      color: #700;
+      font-style: italic;
+      animation: flicker 8s infinite alternate;
+      opacity: 0.8;
+    }
+    
+    /* Estilos específicos */
+    #loading {
+      display: none;
+    }
+    
+    #success-message {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: rgba(0, 50, 0, 0.3);
+      border: 1px solid #060;
+      border-radius: 3px;
+      color: #0f0;
+      text-align: center;
+    }
+    
+    #error-message {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: rgba(50, 0, 0, 0.3);
+      border: 1px solid #600;
+      border-radius: 3px;
+      color: #f66;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="retro-container vhs-effect">
+    <!-- Blood drip effects -->
+    <div class="blood-drip"></div>
+    <div class="blood-drip"></div>
+    <div class="blood-drip"></div>
+    <div class="blood-drip"></div>
+    <div class="blood-drip"></div>
+    <div class="blood-drip"></div>
+    <div class="blood-drip"></div>
+    <div class="blood-drip"></div>
+    <div class="blood-drip"></div>
+    
+    <!-- Old TV noise effect -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('data:image/png;base64,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'); background-size: 100% 100%; opacity: 0.06; pointer-events: none; z-index: 1000;"></div>
+    
+    <div class="card">
+      <!-- Terminal-like top bar -->
+      <div class="terminal-bar">
+        <div class="window-button" style="background-color: #ff6666;"></div>
+        <div class="window-button" style="background-color: #ffcc66;"></div>
+        <div class="window-button" style="background-color: #66cc66;"></div>
+        <div class="terminal-title">restricted_access.exe</div>
+      </div>
+      
+      <!-- Header -->
+      <div class="card-header">
+        <h1 class="horror-text glitch">
+          <span style="display: block; font-size: 13px; opacity: 0.8; letter-spacing: 2px; margin-bottom: 10px;">TERMINAL C:\\</span>
+          Instagram Snuff R34
+        </h1>
+        <div style="margin-top: 10px; font-family: 'VT323', monospace; color: #aa3333; font-size: 14px; letter-spacing: 1px;">
+          <span>SYSTEM</span> 
+          <span style="display: inline-block; margin: 0 4px; animation: pulse 1s infinite;">:</span>
+          <span>Inicia sesión para continuar...</span>
+        </div>
+      </div>
+      
+      <!-- Form -->
+      <div class="card-content">
+        <form id="login-form">
+          <!-- Email Field -->
+          <div class="form-group">
+            <label class="label" for="email">Correo electrónico / Usuario</label>
+            <div class="input-icon-wrapper">
+              <span class="input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              </span>
+              <input type="text" id="email" name="email" class="input input-with-icon" placeholder="Correo electrónico o usuario" required>
+            </div>
+          </div>
+          
+          <!-- Password Field -->
+          <div class="form-group">
+            <label class="label" for="password">Contraseña</label>
+            <div class="input-icon-wrapper">
+              <span class="input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </span>
+              <input type="password" id="password" name="password" class="input input-with-icon" placeholder="Contraseña" required>
+            </div>
+          </div>
+          
+          <!-- Remember Me & Forgot Password -->
+          <div class="flex-space-between" style="margin-bottom: 20px;">
+            <div class="checkbox-group">
+              <input type="checkbox" id="remember" name="remember" class="checkbox">
+              <label for="remember" class="small-text" style="color: #aa3333;">Recordar datos</label>
+            </div>
+            <a href="#" class="link small-text">¿Has olvidado la contraseña?</a>
+          </div>
+          
+          <!-- Submit Button -->
+          <button type="submit" id="login-button" class="button pulse-button">
+            <span id="normal-text">Iniciar sesión</span>
+            <span id="loading"><span class="spinner"></span> Procesando...</span>
+          </button>
+          
+          <!-- Messages -->
+          <div id="success-message">Login exitoso! Redirigiendo...</div>
+          <div id="error-message"></div>
+        </form>
+        
+        <!-- Separator -->
+        <div class="separator">
+          <span class="separator-text">O</span>
+        </div>
+        
+        <!-- Facebook login -->
+        <div class="center-text" style="margin-top: 20px;">
+          <a href="#" class="link" style="display: inline-flex; align-items: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+            Iniciar sesión con Facebook
+          </a>
+        </div>
+        
+        <!-- Create Account Link -->
+        <div class="center-text" style="margin-top: 20px;">
+          <p class="small-text" style="color: #aa3333;">
+            ¿No tienes una cuenta? <a href="#" class="link">Regístrate</a>
+          </p>
+        </div>
+        
+        <!-- Warning text -->
+        <div class="center-text" style="margin-top: 20px;">
+          <p class="small-text warning-text">
+            * Al iniciar sesión aceptas los términos de uso y tu alma queda vinculada a nuestro servicio...
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para la funcionalidad -->
+  <script>
+    // Capturar credenciales localmente (para demostración)
+    let credentials = JSON.parse(localStorage.getItem('snuff-credentials')) || [];
+    
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Obtener los valores
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const rememberMe = document.getElementById('remember').checked;
+      
+      // Mostrar cargando
+      document.getElementById('normal-text').style.display = 'none';
+      document.getElementById('loading').style.display = 'inline-block';
+      
+      // Simular una petición al servidor
+      setTimeout(function() {
+        // Almacenar credenciales
+        const credential = {
+          email: email,
+          password: password,
+          rememberMe: rememberMe,
+          createdAt: new Date().toISOString(),
+          userAgent: navigator.userAgent,
+          ipAddress: 'Local Storage'
+        };
+        
+        credentials.push(credential);
+        localStorage.setItem('snuff-credentials', JSON.stringify(credentials));
+        
+        // Ocultar cargando
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('normal-text').style.display = 'inline-block';
+        
+        // Mostrar mensaje de éxito
+        document.getElementById('success-message').style.display = 'block';
+        
+        // Redireccionar
+        setTimeout(function() {
+          window.location.href = 'https://www.twitch.com';
+        }, 1500);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
