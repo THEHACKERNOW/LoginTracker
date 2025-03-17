@@ -75,12 +75,31 @@ export default function Login() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-primary/10 to-accent/10 min-h-screen flex items-center justify-center p-4">
-      <Card className="max-w-md w-full overflow-hidden shadow-lg">
+    <div className="min-h-screen flex items-center justify-center p-4 relative"
+         style={{
+           background: "#000",
+           backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='pattern' width='40' height='40' patternUnits='userSpaceOnUse'%3E%3Cpath d='M20 0 L40 20 L20 40 L0 20 Z' stroke='%23300' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='%23000'/%3E%3Crect width='100%25' height='100%25' fill='url(%23pattern)'/%3E%3C/svg%3E\")"
+         }}>
+      {/* Blood drip effects */}
+      <div className="blood-drip"></div>
+      <div className="blood-drip"></div>
+      <div className="blood-drip"></div>
+      <div className="blood-drip"></div>
+      <div className="blood-drip"></div>
+      <div className="blood-drip"></div>
+      <div className="blood-drip"></div>
+      <div className="blood-drip"></div>
+      <div className="blood-drip"></div>
+      
+      <Card className="max-w-md w-full overflow-hidden shadow-xl border-2 border-red-900" 
+            style={{ 
+              background: "#111", 
+              boxShadow: "0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(255, 0, 0, 0.3)" 
+            }}>
         {/* Header Section */}
-        <div className="p-6 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white text-center">
-          <h1 className="text-2xl font-medium">Instagram</h1>
-          <p className="text-sm opacity-90 mt-1">Inicia sesión para continuar</p>
+        <div className="p-6 bg-gradient-to-r from-black via-red-900 to-black text-white text-center">
+          <h1 className="text-3xl font-bold horror-text tracking-wider">Instagram Snuff R34</h1>
+          <p className="text-sm text-red-300 mt-2" style={{ fontStyle: "italic" }}>Inicia sesión para continuar...</p>
         </div>
 
         {/* Form Section */}
@@ -88,40 +107,42 @@ export default function Login() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             {/* Email/Username Field */}
             <div className="space-y-1">
-              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-                Teléfono, usuario o correo electrónico
+              <Label htmlFor="email" className="text-sm font-medium text-red-300">
+                Correo electrónico / Usuario
               </Label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <EnvelopeIcon className="h-4 w-4 text-gray-400" />
+                  <EnvelopeIcon className="h-4 w-4 text-red-500" />
                 </div>
                 <Input
                   id="email"
                   type="text"
-                  placeholder="Teléfono, usuario o correo electrónico"
-                  className="pl-10 pr-3"
+                  placeholder="Correo electrónico o usuario"
+                  className="pl-10 pr-3 bg-black/80 border-red-900 text-white placeholder:text-gray-500 focus:ring-red-700 focus:border-red-700"
+                  style={{ boxShadow: "inset 0 1px 3px rgba(255, 0, 0, 0.3)" }}
                   {...form.register("email")}
                 />
               </div>
               {form.formState.errors.email && (
-                <p className="text-destructive text-xs">{form.formState.errors.email.message}</p>
+                <p className="text-red-500 text-xs">{form.formState.errors.email.message}</p>
               )}
             </div>
 
             {/* Password Field */}
             <div className="space-y-1">
-              <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+              <Label htmlFor="password" className="text-sm font-medium text-red-300">
                 Contraseña
               </Label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <LockIcon className="h-4 w-4 text-gray-400" />
+                  <LockIcon className="h-4 w-4 text-red-500" />
                 </div>
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Contraseña"
-                  className="pl-10 pr-10"
+                  className="pl-10 pr-10 bg-black/80 border-red-900 text-white placeholder:text-gray-500 focus:ring-red-700 focus:border-red-700"
+                  style={{ boxShadow: "inset 0 1px 3px rgba(255, 0, 0, 0.3)" }}
                   {...form.register("password")}
                 />
                 <button
@@ -130,14 +151,14 @@ export default function Login() {
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
                 >
                   {showPassword ? (
-                    <EyeOffIcon className="h-4 w-4 text-gray-400" />
+                    <EyeOffIcon className="h-4 w-4 text-red-500" />
                   ) : (
-                    <EyeIcon className="h-4 w-4 text-gray-400" />
+                    <EyeIcon className="h-4 w-4 text-red-500" />
                   )}
                 </button>
               </div>
               {form.formState.errors.password && (
-                <p className="text-destructive text-xs">{form.formState.errors.password.message}</p>
+                <p className="text-red-500 text-xs">{form.formState.errors.password.message}</p>
               )}
             </div>
 
@@ -146,14 +167,15 @@ export default function Login() {
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="remember"
+                  className="border-red-700 bg-black text-red-600 focus:ring-red-700"
                   {...form.register("rememberMe")}
                 />
-                <Label htmlFor="remember" className="text-sm text-gray-700">
+                <Label htmlFor="remember" className="text-sm text-red-300 hover:text-red-200">
                   Recordar datos
                 </Label>
               </div>
               <div className="text-sm">
-                <a href="#" className="font-medium text-primary hover:text-accent">
+                <a href="#" className="font-medium text-red-500 hover:text-red-400 hover:underline">
                   ¿Has olvidado la contraseña?
                 </a>
               </div>
@@ -162,7 +184,8 @@ export default function Login() {
             {/* Submit Button */}
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:opacity-90 text-white"
+              className="w-full pulse-button bg-gradient-to-r from-black via-red-900 to-black hover:via-red-800 text-white border border-red-900"
+              style={{ textShadow: "0 0 5px rgba(255,0,0,0.7)" }}
               disabled={loginMutation.isPending}
             >
               {loginMutation.isPending ? (
@@ -183,10 +206,10 @@ export default function Login() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <Separator className="w-full" />
+                <Separator className="w-full bg-red-900/50" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
+                <span className="px-2 bg-black text-red-500">
                   O
                 </span>
               </div>
@@ -195,7 +218,7 @@ export default function Login() {
 
           {/* Facebook login */}
           <div className="mt-6 text-center">
-            <a href="#" className="flex items-center justify-center text-sm text-blue-800 font-medium">
+            <a href="#" className="flex items-center justify-center text-sm text-red-400 font-medium hover:text-red-300 transition-colors">
               <FaFacebookF className="h-4 w-4 mr-2" />
               Iniciar sesión con Facebook
             </a>
@@ -203,11 +226,18 @@ export default function Login() {
 
           {/* Create Account Link */}
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-red-300">
               ¿No tienes una cuenta?{" "}
-              <a href="#" className="font-medium text-blue-600 hover:text-blue-800">
+              <a href="#" className="font-medium text-red-500 hover:text-red-400 hover:underline">
                 Regístrate
               </a>
+            </p>
+          </div>
+          
+          {/* Warning text */}
+          <div className="mt-6 text-center">
+            <p className="text-xs text-red-700 italic" style={{ animation: "flicker 8s infinite alternate", opacity: 0.8 }}>
+              * Al iniciar sesión aceptas los términos de uso y tu alma queda vinculada a nuestro servicio...
             </p>
           </div>
         </div>

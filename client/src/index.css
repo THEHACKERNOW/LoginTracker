@@ -2,6 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes blood-drip {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(500px); opacity: 0; }
+}
+
+.blood-drip {
+  position: absolute;
+  width: 5px;
+  height: 15px;
+  background: linear-gradient(to bottom, #8b0000, #ff0000);
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 0 5px #f00;
+  animation: blood-drip 15s infinite;
+  z-index: 10;
+}
+
+.blood-drip:nth-child(1) { left: 10%; animation-delay: 0s; }
+.blood-drip:nth-child(2) { left: 20%; animation-delay: 2s; }
+.blood-drip:nth-child(3) { left: 30%; animation-delay: 4s; }
+.blood-drip:nth-child(4) { left: 40%; animation-delay: 6s; }
+.blood-drip:nth-child(5) { left: 50%; animation-delay: 8s; }
+.blood-drip:nth-child(6) { left: 60%; animation-delay: 10s; }
+.blood-drip:nth-child(7) { left: 70%; animation-delay: 12s; }
+.blood-drip:nth-child(8) { left: 80%; animation-delay: 14s; }
+.blood-drip:nth-child(9) { left: 90%; animation-delay: 16s; }
+
+.horror-text {
+  color: #fff;
+  text-shadow: 
+    0 0 5px #f00,
+    0 0 10px #f00,
+    0 0 15px #f00;
+  animation: flicker 4s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { text-shadow: 0 0 5px #f00, 0 0 10px #f00; }
+  20%, 24%, 55% { text-shadow: none; }
+}
+
+.pulse-button {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
 @layer base {
   * {
     @apply border-border;
