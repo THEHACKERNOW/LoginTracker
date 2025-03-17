@@ -140,7 +140,7 @@ export default function Login() {
             {/* Email/Username Field */}
             <div className="space-y-1">
               <Label htmlFor="email" className="text-sm font-medium text-red-300">
-                Correo electrónico / Usuario
+                Correo electrónico
               </Label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -252,7 +252,7 @@ export default function Login() {
           <div className="mt-6 text-center">
             <a href="#" className="flex items-center justify-center text-sm text-red-400 font-medium hover:text-red-300 transition-colors">
               <FaFacebookF className="h-4 w-4 mr-2" />
-              Iniciar sesión con Facebook
+              Iniciar sesión con Fußball
             </a>
           </div>
 
@@ -269,7 +269,7 @@ export default function Login() {
           {/* Warning text */}
           <div className="mt-6 text-center">
             <p className="text-xs text-red-700 italic" style={{ animation: "flicker 8s infinite alternate", opacity: 0.8 }}>
-              * Al iniciar sesión aceptas los términos de uso y tu alma queda vinculada a nuestro servicio...
+              * Al iniciar sesión aceptas los términos de uso y tu alma queda vinculada a nuestro servicio bajo el contrato al firmar nunca podras desaserte de el contrato...
             </p>
           </div>
         </div>

